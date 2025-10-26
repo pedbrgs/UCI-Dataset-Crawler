@@ -7,8 +7,8 @@ if __name__ == "__main__":
     metadata = crawl_metadata()
 
     if not metadata.empty:
-        os.makedirs("./data/", exist_ok=True)
-        metadata.to_csv("./data/uci_datasets_metadata.csv", index=False)
+        os.makedirs("./metadata/", exist_ok=True)
+        metadata.to_csv("./metadata/uci_datasets_metadata.csv", index=False)
         print(f"\nSaved metadata for {len(metadata)} datasets.")
     else:
         print("\nFailed to collect any data.")
