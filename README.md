@@ -6,7 +6,7 @@
 
 ## :book: About
 
-This project uses a modular, two-step process to scrape the UCI Machine Learning Repository, collect detailed metadata, and then download all available files for local repository.
+This project uses a modular, two-step process to scrape the UCI Machine Learning Repository, collect detailed metadata, and then download all available files for a local repository.
 
 ## :gear: Installation
 
@@ -23,7 +23,7 @@ This project uses a modular, two-step process to scrape the UCI Machine Learning
     pip install -r requirements.txt
 ```
 
-You need Python 3.x installed.
+Note: Python 3.x is required.
 
 ## :high_brightness: Usage
 
@@ -34,7 +34,7 @@ The project is executed in two simple steps.
 Run the metadata collector script to crawl the UCI index, extract dataset details, and save the results to a CSV file.
 
 ```bash
-python collect_metadata.py
+    python collect_metadata.py
 ```
 
 The output CSV file is saved by default to `./metadata/uci_datasets_metadata.csv`.
@@ -45,7 +45,7 @@ Use the downloader script to fetch all datasets listed in the metadata file.
 You must provide the path to the CSV file generated in Step 1.
 
 ```bash
-python download_datasets.py --metadata_csv ./metadata/uci_datasets_metadata.csv --download_dir ./datasets/
+    python download_datasets.py --metadata_csv ./metadata/uci_datasets_metadata.csv --download_dir ./datasets/
 ```
 
 ## :open_file_folder: Directory structure
