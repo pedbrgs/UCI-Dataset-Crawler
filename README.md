@@ -34,7 +34,7 @@ The project is executed in two simple steps.
 Run the metadata collector script to crawl the UCI index, extract dataset details, and save the results to a CSV file.
 
 ```bash
-    python collect_metadata.py
+    python ./source/collect_metadata.py
 ```
 
 The output CSV file is saved by default to `./metadata/uci_datasets_metadata.csv`.
@@ -45,7 +45,7 @@ Use the downloader script to fetch all datasets listed in the metadata file.
 You must provide the path to the CSV file generated in Step 1.
 
 ```bash
-    python download_datasets.py --metadata_csv ./metadata/uci_datasets_metadata.csv --download_dir ./datasets/
+    python ./source/download_datasets.py --metadata_csv ./metadata/uci_datasets_metadata.csv --download_dir ./datasets/
 ```
 
 ## :open_file_folder: Directory structure
