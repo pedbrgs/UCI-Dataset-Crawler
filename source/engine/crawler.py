@@ -18,7 +18,7 @@ def get_dataset_links() -> List[str]:
 
     Returns
     -------
-    list
+    List[str]
         A list of dataset page URLs.
     """
     print("Fetching dataset list using pagination...")
@@ -68,7 +68,7 @@ def get_dataset_links() -> List[str]:
         # Move to the next page
         skip += take
         
-        # Wait to be polite
+        # Wait between requests
         time.sleep(0.3)
 
     links = list(all_links)
@@ -85,7 +85,7 @@ def parse_dataset_page(url: str) -> Dict[str, str]:
         The URL of the dataset detail page.
     Returns
     -------
-    dict
+    Dict[str, str]
         A dictionary containing the dataset metadata.
     """
     name = "N/A"
@@ -182,7 +182,7 @@ def crawl_metadata() -> pd.DataFrame:
         print(f"[{i}/{len(links)}] Scraping: {link}")
         data = parse_dataset_page(link)
         all_data.append(data)
-        # Be polite, wait between requests
+        # Wait between requests
         time.sleep(0.3)
 
     df = pd.DataFrame(all_data)
