@@ -1,4 +1,5 @@
 import argparse
+import pandas as pd
 from engine.downloader import download_datasets
 
 
@@ -20,4 +21,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print("Starting UCI Dataset Downloader...")
-    download_datasets(args.metadata_csv, args.download_dir)
+    metadata = pd.read_csv(args.metadata_csv)
+    download_datasets(metadata, args.download_dir)
