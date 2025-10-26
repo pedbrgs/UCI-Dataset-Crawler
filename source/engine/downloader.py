@@ -7,8 +7,6 @@ from bs4 import BeautifulSoup
 
 # Define the base URL for UCI Machine Learning Repository
 BASE_URL = "https://archive.ics.uci.edu"
-# Define the directory to save downloaded datasets
-DOWNLOAD_DIR = "../Datasets"
 # Define a robust, browser-like User-Agent
 COMMON_HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
 
@@ -52,18 +50,20 @@ def get_direct_download_link(metadata_url: str) -> str:
         return None
 
 
-def download_datasets(metadata: pd.DataFrame) -> None:
+def download_datasets(metadata: pd.DataFrame, download_dir: str) -> None:
     """Download datasets from UCI based on the provided metadata.
 
     Parameters
     ----------
     metadata : pd.DataFrame
         DataFrame containing at least 'name' and 'url' columns for datasets.
+    download_dir : str
+        Directory to save downloaded datasets.
     """
-    print(f"\nStarting dataset download to: {DOWNLOAD_DIR}")
+    print(f"\nStarting dataset download to: {download_dir}")
     
     # Create the target directory if it doesn't exist
-    os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+    os.makedirs(download_dir, exist_ok=True)
     
     successful_downloads = 0
     total_datasets = len(metadata)
@@ -91,7 +91,7 @@ def download_datasets(metadata: pd.DataFrame) -> None:
             # Default to zip if the extension is ambiguous
             file_extension = 'zip'
         
-        output_filename = os.path.join(DOWNLOAD_DIR, f"{safe_name}.{file_extension}")
+        output_filename = os.path.join(download_dir, f"{safe_name}.{file_extension}")
         
         # Skip if the file already exists (optional optimization)
         if os.path.exists(output_filename):
